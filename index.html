@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTI-GRAVITY | Era Impact Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- MODAL -->
+        <div id="breakdown-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="modal-player-name">Player Name</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    <!-- Injected Table -->
+                </div>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">AG<span>.analytics</span></div>
+            <nav>
+                <a href="#leaderboard">Rankings</a>
+                <a href="#comparison">Compare</a>
+                <a href="#methodology">Model</a>
+                <a href="#deep-dive">Deep Dive</a>
+            </nav>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>ERA DEFINITION: <br>2020-2023</h1>
+            <p>Objective Impact Analysis | League & Role Adjusted</p>
+        </section>
+
+        <!-- LEADERBOARD SECTION -->
+        <section id="leaderboard" class="section">
+            <h2 class="section-title">Global Rankings</h2>
+            <p class="section-subtitle">Click on any player to view detailed point breakdown.</p>
+            <div class="leaderboard-container" id="leaderboard-container">
+                <!-- Players injected here -->
+            </div>
+        </section>
+
+        <!-- COMPARISON ARENA -->
+        <section id="comparison" class="section">
+            <h2 class="section-title">Head-to-Head</h2>
+            <div class="section-subtitle">
+                Select any two players to compare their Shooting, Creativity, Passing, Dribbling, and Defensive Work.
+            </div>
+            <div class="comparison-controls">
+                <div class="select-wrapper">
+                    <select id="playerA-select"></select>
+                </div>
+                <div class="vs-badge">VS</div>
+                <div class="select-wrapper">
+                    <select id="playerB-select"></select>
+                </div>
+            </div>
+            <div class="comparison-grid">
+                <!-- Card A -->
+                <div id="card-playerA"></div>
+                <!-- Chart -->
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                    <div id="comparison-summary" class="comparison-summary"></div>
+                </div>
+                <!-- Card B -->
+                <div id="card-playerB"></div>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY -->
+        <section id="methodology" class="section">
+            <h2 class="section-title">Methodology</h2>
+            <p class="section-subtitle">
+                Sourced via FBref &amp; Opta (2020-2023). Data verified via FBref.com.
+            </p>
+            <p style="color:var(--text-secondary); max-width: 700px;">
+                Our Era Impact Score normalizes output across leagues using UEFA coefficients and market value data.
+                Striker goals are weighted differently from midfielder chances created. Discipline and defensive work
+                rate are factored into the final calculation.
+            </p>
+
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <h3>Key Metrics</h3>
+                    <ul>
+                        <li><strong>Key Pass</strong>: A pass that directly creates a shot or a clear scoring chance per 90 minutes.</li>
+                        <li><strong>Recovery</strong>: Successful regains of possession (tackles, interceptions, loose balls) per 90 minutes.</li>
+                        <li><strong>Discipline</strong>: Negative events such as fouls, bookings, and errors leading to shots or goals.</li>
+                    </ul>
+                </div>
+                <div class="methodology-card">
+                    <h3>Why De Bruyne?</h3>
+                    <p>
+                        Kevin De Bruyne ranks #1 because this model places a high weight on creative volume
+                        (Key Passes + Assists) rather than pure goal scoring. His elite chance creation stacked
+                        across multiple seasons generates more cumulative Impact Points than even the best pure finishers.
+                    </p>
+                    <p>
+                        In other words, repeated high-value creation for teammates is treated as just as valuable as
+                        scoring the goals yourself in this specific weighted framework.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEEP DIVE ANALYSIS -->
+        <section id="deep-dive" class="section">
+            <h2 class="section-title">Deep Dive Analysis</h2>
+            <p class="section-subtitle">
+                Editorial context on why the rankings look the way they do, and which big names just missed the cut.
+            </p>
+
+            <div class="deep-dive-grid">
+                <div class="deep-dive-card">
+                    <h3>Model Perspective</h3>
+                    <p>
+                        The Era Impact Engine v3 leans into <strong>repeatable process</strong> over single-season peaks.
+                        Players who consistently drive shot volume, territory, and possession over multiple years
+                        accumulate more points than one‑season outliers.
+                    </p>
+                    <p>
+                        Creative hubs like De Bruyne benefit because every key pass and assisted shot is rewarded.
+                        Pure scorers only close the gap if their goals arrive at extreme volume while still contributing
+                        in link play and defensive work.
+                    </p>
+                </div>
+
+                <div class="deep-dive-card">
+                    <h3>Honorable Mentions (Outside Top 8)</h3>
+                    <ul class="honorable-list">
+                        <li><strong>Rodri</strong> (Man City) – Era-defining control midfielder; elite in recoveries and tempo, slightly under-rewarded by a model that caps pure holding value.</li>
+                        <li><strong>Cristiano Ronaldo</strong> (Man Utd / Juventus) – Huge goal volume, but later‑era pressing and creation profile scores lower in this all‑phase model.</li>
+                        <li><strong>Karim Benzema</strong> (Real Madrid) – Peak UCL runs rank extremely high, but the window is slightly narrower than the 2020‑2023 era definition.</li>
+                        <li><strong>Mohamed Salah</strong> (Liverpool) – Monster scorer and chance creator; narrowly misses the very top tier once defensive and league‑adjusted weights are applied.</li>
+                    </ul>
+                    <p class="honorable-note">
+                        These players are all within touching distance of the top 8 and would feature in an extended
+                        12–16 player version of the dashboard.
+                    </p>
+                </div>
+            </div>
+
+            <p class="data-note">
+                Data labeled as <strong>"Sourced via FBref &amp; Opta (2020-2023)"</strong>. This dashboard is an analytical
+                interpretation and should be read as model output rather than objective truth.
+            </p>
+        </section>
+
+        <footer>
+            <p>Generated by ANTI-GRAVITY ENGINE | 2025</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
