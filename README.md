@@ -1,4 +1,4 @@
-## Era Impact Engine v3 – ANTI-GRAVITY Dashboard
+## Era Impact Engine v3 – Advanced Era Impact Dashboard
 
 Static web app that ranks and compares top footballers from the 2020–2023 era using a custom Era Impact Score.
 
